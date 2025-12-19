@@ -78,18 +78,18 @@
   }
 
   .footerTitle {
-    text-align: center;
+
     font-size: 1.3rem;
   }
 
   .footerSubtitle {
     font-size: 1rem;
   }
-
+/* 
   .contactList li,
   .quickLinks li {
     text-align: center;
-  }
+  } */
 
   .supportCard {
     margin-top: 20px;
