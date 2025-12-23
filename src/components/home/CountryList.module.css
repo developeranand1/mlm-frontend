@@ -1,0 +1,167 @@
+.section{
+  background: #ffffff;
+}
+
+.head{
+  padding-inline: 6px;
+}
+
+.title{
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: clamp(18px, 2vw, 26px);
+}
+
+/* Frame like screenshot */
+.sliderFrame{
+  position: relative;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 10px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* ICON BUTTONS */
+.iconBtn{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.iconBtn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* Marquee (infinite loop) */
+.marquee{
+  --duration: 35s;
+  display: flex;
+  gap: 18px;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marqueeGroup{
+  display: flex;
+  gap: 18px;
+  flex-shrink: 0;
+  align-items: center;
+
+  /* this group moves */
+  animation: scroll var(--duration) linear infinite;
+}
+
+/* Pause on hover (nice UX) */
+.sliderFrame:hover .marqueeGroup{
+  animation-play-state: paused;
+}
+
+/* Reverse direction when needed */
+.reverse .marqueeGroup{
+  animation-direction: reverse;
+}
+
+/* Keyframes: move exactly one full group width */
+@keyframes scroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* Cards */
+.card{
+  width: clamp(180px, 18vw, 260px);
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.imgWrap{
+  height: clamp(120px, 14vw, 160px);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f5f7fa;
+  display: grid;
+  place-items: center;
+}
+
+.img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meta{
+  padding-top: 10px;
+  text-align: center;
+}
+
+.countryName{
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.price{
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.rupee{
+  font-weight: 900;
+  margin-right: 2px;
+}
+
+.per{
+  font-weight: 600;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+/* dots like screenshot */
+.dots{
+  position: absolute;
+  left: 24px;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #7dd3a6;
+  box-shadow: 0 0 0 4px rgba(125, 211, 166, 0.22);
+}
+
+.dotMuted{
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.15);
+}
+
+/* Mobile spacing tweaks */
+@media (max-width: 576px){
+  .sliderFrame{
+    padding: 14px 8px 30px;
+  }
+  .dots{
+    left: 14px;
+  }
+}

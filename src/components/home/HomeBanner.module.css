@@ -1,0 +1,64 @@
+.banner {
+  background: #f6f2ea; /* light warm background like screenshot */
+  padding: 60px 0;
+}
+
+.rowGap {
+  row-gap: 28px;
+}
+
+.title {
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  font-size: clamp(32px, 4vw, 56px);
+  margin: 0 0 20px 0;
+}
+
+.ctaBtn {
+  background: #d6b26d; /* warm beige button */
+  border: 0;
+  color: #111;
+  border-radius: 999px;
+  padding: 14px 26px;
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.ctaBtn:hover {
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.ctaBtn:active {
+  transform: translateY(0px);
+}
+
+.imageWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: min(420px, 100%);
+  height: auto;
+  object-fit: contain;
+  /* bottle shadow look */
+  filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.18));
+}
+
+/* Responsive tweaks */
+@media (max-width: 991px) {
+  .banner {
+    padding: 42px 0;
+  }
+  .imageWrap {
+    justify-content: flex-start;
+  }
+}

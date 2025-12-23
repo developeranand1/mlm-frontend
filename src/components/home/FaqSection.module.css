@@ -1,0 +1,157 @@
+.section {
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title */
+.title {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.title span {
+  color: #16a34a; /* green accent */
+}
+
+.subtitle {
+  max-width: 740px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Wrapper card */
+.faqWrap {
+  margin-top: 28px;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+  padding: 18px;
+}
+
+/* Each item */
+.faqItem {
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+/* Button row */
+.faqBtn {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: #ffffff;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.qRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.qNo {
+  font-weight: 800;
+  color: #111;
+  min-width: 26px;
+}
+
+.qText {
+  font-weight: 700;
+  color: #111;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+/* Chevron */
+.chev {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  color: #16a34a;
+  transition: transform 220ms ease, background 220ms ease;
+  flex: 0 0 auto;
+}
+
+.chevOpen {
+  transform: rotate(180deg);
+  background: rgba(22, 163, 74, 0.08);
+}
+
+/* Answer animation */
+.ans {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease;
+}
+
+.ansOpen {
+  max-height: 260px; /* enough for 2-3 lines */
+}
+
+.ansInner {
+  padding: 0 20px 18px 56px;
+  color: #6b7280;
+  line-height: 1.75;
+  font-size: 15.5px;
+}
+
+/* hover feel */
+.faqItem:hover {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+/* Decorative dots */
+.topDots {
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  opacity: 0.7;
+}
+
+.topDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(22, 163, 74, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .faqWrap {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .faqBtn {
+    padding: 16px 14px;
+  }
+
+  .qText {
+    font-size: 16px;
+  }
+
+  .ansInner {
+    padding: 0 14px 14px 44px;
+  }
+}

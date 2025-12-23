@@ -1,0 +1,58 @@
+.section {
+  background: #ffffff;
+  padding: 70px 0;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  margin-bottom: 50px;
+  color: #111;
+}
+
+.card {
+  margin-bottom: 40px;
+}
+
+/* Icon circle */
+.iconWrap {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: #e9f9ef; /* light green */
+  color: #16a34a; /* main green */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+/* Numbers */
+.value {
+  font-size: 32px;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+/* Labels */
+.label {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .iconWrap {
+    width: 80px;
+    height: 80px;
+    font-size: 34px;
+  }
+
+  .value {
+    font-size: 26px;
+  }
+}

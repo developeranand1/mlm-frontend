@@ -1,0 +1,71 @@
+.wrapper {
+  background: #fbf6ea;
+  padding: 70px 0 90px;
+}
+
+/* Top heading */
+.heading {
+  font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 800;
+  color: #c8921b;
+  margin-bottom: 18px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Paragraphs */
+.text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+/* CTA Title */
+.ctaTitle {
+  margin: 65px 0 28px;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 900;
+  color: #1b1b1b;
+}
+
+.ctaTitle span {
+  color: #d4a437;
+}
+
+/* Buttons */
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #f0c24a, #d4a437);
+  color: #111;
+  font-weight: 700;
+  font-size: 17px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .text {
+    font-size: 16px;
+  }
+
+  .ctaTitle {
+    margin-top: 45px;
+  }
+}
