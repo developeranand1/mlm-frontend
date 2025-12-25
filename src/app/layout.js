@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { AuthProvider } from "@/context/AuthProvider";
+import { CartProvider } from "@/context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +25,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <CartProvider>
         <AuthProvider>
         <Header />
         {children}
         <Footer />
         </AuthProvider>
+        </CartProvider>
       </body>
     </html>
   );

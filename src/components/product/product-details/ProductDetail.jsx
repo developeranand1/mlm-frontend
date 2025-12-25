@@ -14,8 +14,13 @@ import {
   FaUndo,
   FaCheckCircle,
 } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductDetail({ product }) {
+  const router = useRouter();
+    const { addItem } = useCart();
+
   if (!product) {
     return (
       <div className="container py-5">
@@ -44,8 +49,14 @@ export default function ProductDetail({ product }) {
     ? Math.round((offerAmount / price) * 100)
     : 0;
 
-  const onAddToCart = () => console.log("Add to cart:", product);
-  const onBuyNow = () => console.log("Buy now:", product);
+  const onAddToCart = () => {
+    addItem(product, 1); // ✅ duplicate safe, qty++
+  };
+
+  const onBuyNow = () => {
+    addItem(product, 1);
+    router.push("/cart"); // ✅ direct cart page
+  };
 
   const rating = 4; // demo UI rating (replace with real rating if you have)
 

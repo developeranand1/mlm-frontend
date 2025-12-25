@@ -5,8 +5,12 @@ import { FaShoppingCart, FaTag, FaBoxOpen, FaStar } from "react-icons/fa";
 import { getProductList } from "@/services/productService";
 import styles from "./ProductList.module.css";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductList() {
+
+   const { addItem } = useCart();
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -22,6 +26,11 @@ export default function ProductList() {
       }
     })();
   }, []);
+
+    const onAddToCart = (product) => {
+    addItem(product, 1); // ✅ duplicate safe, qty++
+  };
+
 
   if (loading) return <p className={styles.center}>Loading products...</p>;
 
@@ -72,7 +81,12 @@ export default function ProductList() {
                   </div>
 
                   <div className={styles.btnRow}>
-                    <button className={styles.cartBtn}>
+                  <button
+    className={styles.cartBtn}
+    onClick={() => onAddToCart(p)}   // ✅ FIX HERE
+    disabled={p.stock <= 0}
+  >
+                       
                       <FaShoppingCart />
                       Add to Cart
                     </button>

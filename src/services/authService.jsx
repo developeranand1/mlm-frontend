@@ -6,12 +6,8 @@ const extractMessage = (error, fallback) =>
   error?.response?.data?.msg ||
   fallback;
 
-/**
- * Accepts:
- *  - { identifier, password }  ✅ (your UI)
- *  - OR { email, password }
- *  - OR { username, password }
- */
+
+
 export const authLogin = async (payload) => {
   try {
     const identifier = (payload?.identifier || "").trim();
@@ -48,5 +44,41 @@ export const authSignUp = async (payload) => {
     return res.data;
   } catch (error) {
     throw new Error(extractMessage(error, "Signup failed. Please try again."));
+  }
+};
+
+export const kycDetail = async (userId) => {
+  try {
+    const resp = await api.get(`/kyc/user/${userId}`);
+      return resp.data;
+  } catch (error) {
+    throw new Error(
+      extractMessage(error, "Kyc details failed. Please try again.")
+    );
+  }
+};
+
+
+export const kycUpdate = async (userId, formData) => {
+  try {
+    const res = await api.put(`/users/updateKYC/${userId}`, formData, {
+      // ✅ IMPORTANT: let browser set boundary automatically
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(extractMessage(error, "Failed to update KYC details."));
+  }
+};
+
+
+export const userProfile = async (userId) => {
+  try {
+    const resp = await api.get(`/users/user/${userId}`);
+      return resp.data;
+  } catch (error) {
+    throw new Error(
+      extractMessage(error, "Kyc details failed. Please try again.")
+    );
   }
 };
