@@ -8,6 +8,8 @@ import ProductList from "@/components/home/ProductList";
 import Achievements from "@/components/Achievements/Achievements";
 import FaqSection from "@/components/home/FaqSection";
 import WhyChoose from "@/components/WhyChoose/WhyChoose";
+import FeaturedCollection from "@/components/home/FeaturedCollection";
+import ConnectUS from "@/components/home/ConnectUs";
 
 export default function Home() {
   return (
@@ -15,12 +17,12 @@ export default function Home() {
       <HomeBanner></HomeBanner>
       <JoinCommunity />
       <CountryList></CountryList>
-
-      {/* <FeatureProduct></FeatureProduct> */}
       <ProductList />
       <Achievements />
+      <FeaturedCollection/>
        <WhyChoose />
       <FaqSection/>
+      <ConnectUS></ConnectUS>
     </>
   );
 }

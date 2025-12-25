@@ -1,0 +1,236 @@
+/* ===== Page & layout polish ===== */
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(34,197,94,.20), transparent 60%),
+              radial-gradient(900px 500px at 90% 30%, rgba(22,163,74,.18), transparent 60%),
+              #f7faf9;
+}
+
+.shell {
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.left {
+  border-radius: 18px;
+  padding: 28px;
+  color: #0f172a;
+  background: linear-gradient(135deg, rgba(22,163,74,.14), rgba(34,197,94,.10));
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+.left h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  letter-spacing: .2px;
+}
+
+.left p {
+  margin: 0;
+  color: rgba(15,23,42,.75);
+  line-height: 1.6;
+}
+
+.right {
+  display: grid;
+  align-items: center;
+}
+
+.card {
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 18px 50px rgba(15,23,42,.10);
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin: 6px 0 16px;
+  color: rgba(15,23,42,.65);
+  font-size: 13px;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(15,23,42,.80);
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.field label span {
+  font-weight: 700;
+  color: rgba(15,23,42,.55);
+}
+
+/* ===== Input style upgrade (your same classes) ===== */
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #fff;
+  border: 1px solid rgba(2, 6, 23, .12);
+  border-radius: 14px;
+  padding: 12px 12px;
+
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.inputWrap:focus-within {
+  border-color: rgba(34, 197, 94, .75);
+  box-shadow: 0 0 0 4px rgba(34,197,94,.18);
+  transform: translateY(-1px);
+}
+
+.inputWrap input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: #0f172a;
+  background: transparent;
+}
+
+.inputWrap input::placeholder {
+  color: rgba(15,23,42,.45);
+}
+
+.icon {
+  color: #16a34a;
+  font-size: 16px;
+  flex: 0 0 auto;
+}
+
+/* Eye button better click area */
+.eyeBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(15,23,42,.55);
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  transition: background .18s ease, color .18s ease;
+}
+
+.eyeBtn:hover {
+  background: rgba(2, 6, 23, .05);
+  color: rgba(15,23,42,.75);
+}
+
+/* ===== Buttons polish ===== */
+.btn {
+  margin-top: 6px;
+  height: 48px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: .3px;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(34,197,94,.22);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 16px 30px rgba(34,197,94,.28);
+}
+
+.btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 10px 22px rgba(34,197,94,.22);
+}
+
+.googleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(2, 6, 23, .12);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 800;
+  color: #0f172a;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.googleBtn:hover {
+  transform: translateY(-1px);
+  background: rgba(2, 6, 23, .02);
+  box-shadow: 0 12px 26px rgba(15,23,42,.10);
+}
+
+.or {
+  text-align: center;
+  margin: 12px 0;
+  font-weight: 800;
+  color: rgba(15,23,42,.45);
+  position: relative;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(2, 6, 23, .10);
+}
+
+.or::before { left: 0; }
+.or::after { right: 0; }
+
+.footer {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: rgba(15,23,42,.65);
+  text-align: center;
+}
+
+.footer a {
+  color: #16a34a;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    order: 2;
+  }
+}

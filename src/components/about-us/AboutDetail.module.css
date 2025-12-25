@@ -1,0 +1,277 @@
+.page {
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(34,197,94,.18), transparent 60%),
+    radial-gradient(900px 500px at 90% 20%, rgba(22,163,74,.15), transparent 60%),
+    #f8fafc;
+  min-height: 100vh;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(34,197,94,.15);
+  border: 1px solid rgba(34,197,94,.25);
+  color: #14532d;
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #0f172a;
+}
+
+.title span {
+  color: #16a34a;
+}
+
+.text {
+  margin-top: 14px;
+  color: #475569;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.highlight {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(22,163,74,.08);
+  border: 1px solid rgba(22,163,74,.18);
+  font-weight: 700;
+  color: #14532d;
+}
+
+/* Image section */
+.imageWrap {
+  position: relative;
+  background: rgba(255,255,255,.85);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.08);
+  backdrop-filter: blur(8px);
+}
+
+.image {
+  width: 100%;
+  height: 550px !important;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+/* Floating info card */
+.floatingCard {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  right: 20px;
+  background: #0b1220;
+  color: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+.floatingCard h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.floatingCard p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.8);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .floatingCard {
+    position: static;
+    margin-top: 16px;
+  }
+}
+.page{
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(34,197,94,.18), transparent 60%),
+              radial-gradient(1200px 600px at 80% 20%, rgba(22,163,74,.14), transparent 55%),
+              #f7fbf8;
+  min-height: 100vh;
+}
+
+.hero{
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+  backdrop-filter: blur(8px);
+}
+
+.kicker{
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: .14em;
+  font-size: 12px;
+  color: #166534;
+  background: rgba(34,197,94,.12);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.title{
+  margin-top: 12px;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #052e16;
+}
+
+.title span{
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead{
+  margin-top: 14px;
+  font-size: 16px;
+  color: #0f172a;
+  opacity: .95;
+}
+
+.text{
+  margin-top: 10px;
+  color: #334155;
+  font-size: 15px;
+}
+
+.featureGrid{
+  margin-top: 8px;
+}
+
+.featureCard{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  padding: 14px 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+.featureCard h6{
+  margin: 0;
+  font-weight: 900;
+  color: #052e16;
+  font-size: 14px;
+}
+
+.featureCard p{
+  margin: 4px 0 0;
+  color: #475569;
+  font-size: 13px;
+}
+
+.fIcon{
+  font-size: 18px;
+  color: #16a34a;
+  margin-top: 2px;
+}
+
+.imageCard{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  background: #fff;
+}
+
+.image{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.imageBadge{
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .04em;
+  backdrop-filter: blur(6px);
+}
+
+.sectionHead{
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.sectionHead h2{
+  font-weight: 1000;
+  color: #052e16;
+  letter-spacing: -.02em;
+}
+
+.sectionHead p{
+  margin-top: 10px;
+  color: #475569;
+  font-size: 15px;
+}
+
+.modelCard{
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 12px 26px rgba(0,0,0,.07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.modelCard:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.10);
+}
+
+.mIcon{
+  font-size: 22px;
+  color: #16a34a;
+}
+
+.modelCard h5{
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 950;
+  color: #052e16;
+}
+
+.modelCard p{
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+}
+
+.bottomNote{
+  margin-top: 22px;
+  text-align: center;
+  background: rgba(34,197,94,.10);
+  border: 1px solid rgba(34,197,94,.18);
+  color: #14532d;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+}

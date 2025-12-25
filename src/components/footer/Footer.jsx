@@ -7,6 +7,7 @@ import {
   FaRegAddressCard,
 } from "react-icons/fa"; // Importing icons from react-icons
 import styles from "./Footer.module.css"; // Importing custom CSS module
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -41,19 +42,19 @@ export default function Footer() {
             <h3 className={styles.footerTitle}>Quick Links</h3>
             <ul className={styles.quickLinks}>
               <li>
-                <a href="#">Home</a>
+                <Link href="/blog">Blog</Link>
               </li>
               <li>
-                <a href="#">About Us</a>
+                <Link href="/about-us">About Us</Link>
               </li>
               <li>
-                <a href="#">Our Products</a>
+                <Link href="/product-list">Our Products</Link>
               </li>
               <li>
-                <a href="#">Gallery</a>
+                <Link href="/gallery-list">Gallery</Link>
               </li>
               <li>
-                <a href="#">Contact Us</a>
+                <Link href="/contact-us">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -63,16 +64,16 @@ export default function Footer() {
             <h3 className={styles.footerTitle}>Legal</h3>
             <ul className={styles.quickLinks}>
               <li>
-                <a href="#">Terms & Conditions</a>
+                <Link href="/terms-conditions">Terms & Conditions</Link>
               </li>
               <li>
-                <a href="#">Privacy Policy</a>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#">Refund Policy</a>
+                <Link href="/refund-returns">Refund Policy</Link>
               </li>
               <li>
-                <a href="#">Delivery Policy</a>
+                <Link href="/disclaimer">Disclaimer</Link>
               </li>
             </ul>
 
