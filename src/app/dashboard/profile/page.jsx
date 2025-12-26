@@ -12,7 +12,7 @@ import {
   FaLink,
   FaUsers,
 } from "react-icons/fa";
-import { userProfile } from "@/services/authService";
+import { userDetails, userProfile } from "@/services/authService";
 import { useRouter } from "next/navigation";
 
 export default function Profile() {
@@ -38,7 +38,7 @@ export default function Profile() {
           return;
         }
 
-        const res = await userProfile(userId);
+        const res = await userDetails(userId);
 
         // ✅ your API shape: { success: true, data: {...user} }
         setUser(res?.data || null);

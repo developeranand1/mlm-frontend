@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { authLogin } from "@/services/authService";
@@ -15,7 +15,6 @@ export default function LoginPage() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
-
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState({ type: "", text: "" });
 
@@ -23,26 +22,29 @@ export default function LoginPage() {
     e.preventDefault();
     setMsg({ type: "", text: "" });
 
-    if (!identifier.trim() || !password.trim()) {
+    const id = identifier.trim();
+    const pass = password.trim();
+
+    if (!id || !pass) {
       setMsg({ type: "danger", text: "Please enter email/username and password." });
       return;
     }
 
     try {
       setLoading(true);
-      const data = await authLogin({ identifier, password });
+
+      const data = await authLogin({ identifier: id, password: pass });
 
       if (!data?.token || !data?.user) {
         setMsg({ type: "danger", text: "Invalid response from server." });
         return;
       }
 
-      // ✅ store + context update
       login(data);
-
       setMsg({ type: "success", text: "Login successful! Redirecting..." });
       router.replace("/dashboard");
     } catch (err) {
+      console.log("LOGIN ERROR:", err); // ✅ browser console me dekho
       setMsg({ type: "danger", text: err.message || "Login failed." });
     } finally {
       setLoading(false);
@@ -58,8 +60,7 @@ export default function LoginPage() {
               <div
                 className="h-100 p-4 p-md-5 rounded-4 text-white shadow"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #0ea5e9 0%, #22c55e 55%, #16a34a 100%)",
+                  background: "linear-gradient(135deg, #0ea5e9 0%, #22c55e 55%, #16a34a 100%)",
                 }}
               >
                 <p className="text-uppercase fw-semibold opacity-75 mb-2">Begin your</p>
@@ -100,6 +101,8 @@ export default function LoginPage() {
                           value={identifier}
                           onChange={(e) => setIdentifier(e.target.value)}
                           autoComplete="username"
+                          required
+                          disabled={loading}
                         />
                       </div>
                     </div>
@@ -117,12 +120,15 @@ export default function LoginPage() {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           autoComplete="current-password"
+                          required
+                          disabled={loading}
                         />
                         <button
                           type="button"
                           className="btn btn-outline-secondary"
                           onClick={() => setShowPass((p) => !p)}
                           aria-label="Toggle password visibility"
+                          disabled={loading}
                         >
                           {showPass ? <FaEyeSlash /> : <FaEye />}
                         </button>
@@ -145,9 +151,6 @@ export default function LoginPage() {
                     </Link>
                   </p>
 
-                  <p className="text-muted small mt-3 mb-0">
-                    If Postman works but browser fails → CORS/baseURL mismatch.
-                  </p>
                 </div>
               </div>
             </div>

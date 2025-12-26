@@ -8,43 +8,73 @@ const extractMessage = (error, fallback) =>
 
 
 
-export const authLogin = async (payload) => {
+// export const authLogin = async (payload) => {
+//   try {
+//     const identifier = (payload?.identifier || "").trim();
+//     const password = (payload?.password || "").trim();
+
+//     // If user already passes email/username directly, keep it
+//     const email = (payload?.email || "").trim();
+//     const username = (payload?.username || "").trim();
+
+//     // Build backend-friendly payload
+//     let body = { password };
+
+//     if (email) body.email = email;
+//     else if (username) body.username = username;
+//     else if (identifier) {
+//       // ✅ Map identifier to email/username
+//       if (identifier.includes("@")) body.email = identifier;
+//       else body.username = identifier;
+
+//       // (Optional) some backends accept both; can send both:
+//       // body = { email: identifier, username: identifier, password };
+//     }
+
+//     const res = await api.post("/auths/login", body);
+//     return res.data;
+//   } catch (error) {
+//     throw new Error(extractMessage(error, "Login failed. Please try again."));
+//   }
+// };
+
+export const authLogin = async ({ identifier, password }) => {
   try {
-    const identifier = (payload?.identifier || "").trim();
-    const password = (payload?.password || "").trim();
+    const body = {
+      identifier: String(identifier || "").trim(),
+      password: String(password || "").trim(),
+    };
 
-    // If user already passes email/username directly, keep it
-    const email = (payload?.email || "").trim();
-    const username = (payload?.username || "").trim();
-
-    // Build backend-friendly payload
-    let body = { password };
-
-    if (email) body.email = email;
-    else if (username) body.username = username;
-    else if (identifier) {
-      // ✅ Map identifier to email/username
-      if (identifier.includes("@")) body.email = identifier;
-      else body.username = identifier;
-
-      // (Optional) some backends accept both; can send both:
-      // body = { email: identifier, username: identifier, password };
-    }
-
-    const res = await api.post("/auth/login", body);
+    const res = await api.post("/auths/login", body); // ✅ yaha apna exact backend path rakho
     return res.data;
   } catch (error) {
     throw new Error(extractMessage(error, "Login failed. Please try again."));
   }
 };
 
+
+
 export const authSignUp = async (payload) => {
   try {
-    const res = await api.post("/auth/register", payload);
+    const res = await api.post("/auths/register", payload);
     return res.data;
   } catch (error) {
     throw new Error(extractMessage(error, "Signup failed. Please try again."));
   }
+};
+
+
+export const userDetails = async (userId) => {
+  const resp = await api.get(`/auths/users/${userId}`);
+  // ✅ unwrap backend shape
+  return resp.data?.user;
+};
+
+
+export const userRankDetails = async (userId) => {
+  const resp = await api.get(`/auths/status/${userId}`);
+  // ✅ unwrap backend shape
+  return resp.data?.rank;
 };
 
 export const kycDetail = async (userId) => {
