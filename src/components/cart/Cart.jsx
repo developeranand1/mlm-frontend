@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import React, { useMemo, useState } from "react";
 import styles from "./CartPage.module.css";
 import { useCart } from "@/context/CartContext";
@@ -19,6 +19,7 @@ function money(n) {
 }
 
 export default function CartPage() {
+  const router = useRouter();
   const { items, updateQty, removeItem, cartTotal, clearCart } = useCart();
   const [confirm, setConfirm] = useState({ open: false, type: "", payload: null });
 
@@ -164,9 +165,9 @@ export default function CartPage() {
                 <b className={styles.totalBig}>{money(cartTotal)}</b>
               </div>
 
-              <button className={`btn ${styles.checkoutBtn}`}>
-                PROCEED TO CHECKOUT
-              </button>
+              <button className={`btn ${styles.checkoutBtn}`} onClick={() => router.push("/checkout")}>
+  PROCEED TO CHECKOUT
+</button>
 
               <div className={styles.smallNote}>
                 Inclusive of all taxes • Free delivery above ₹499
