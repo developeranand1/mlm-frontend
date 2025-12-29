@@ -77,6 +77,13 @@ export const userRankDetails = async (userId) => {
   return resp.data?.rank;
 };
 
+
+export const userWalletDetails = async (userId) => {
+  const resp = await api.get(`/wallet/by-user/${userId}`);
+  // ✅ unwrap backend shape
+  return resp.data;
+};
+
 export const kycDetail = async (userId) => {
   try {
     const resp = await api.get(`/kyc/user/${userId}`);

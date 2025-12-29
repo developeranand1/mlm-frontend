@@ -2,6 +2,7 @@
 
 import Dashboard from "@/components/dashboard/Dashboard";
 import UserRank from "@/components/dashboard/UserRank";
+import WalletDashboard from "@/components/dashboard/WalletDashboard";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import React from "react";
 import { FaBox, FaShoppingCart, FaUsers, FaRupeeSign } from "react-icons/fa";
@@ -17,6 +18,7 @@ export default function DashboardHome() {
   return (
      <ProtectedRoute>
       <UserRank></UserRank>
+      <WalletDashboard/>
    <Dashboard></Dashboard>
     </ProtectedRoute>
   );

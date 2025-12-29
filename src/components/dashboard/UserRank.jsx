@@ -42,10 +42,6 @@ export default function UserRank() {
 
         const resp = await userRankDetails(id);
 
-        // ✅ Handle different API shapes:
-        // Case A: { ok: true, rank: {...} }
-        // Case B: { ok: true, user: {...}, rank: {...} }
-        // Case C: direct rank object
         const r = resp?.rank || resp?.user?.rank || resp;
         setRank(r || null);
       } catch (err) {
@@ -116,15 +112,11 @@ export default function UserRank() {
           </p>
         </div>
 
-        <span className={styles.badgeGreen}>
-          {rank?.rankName || "No Rank"}
-        </span>
+        <span className={styles.badgeGreen}>{rank?.rankName || "No Rank"}</span>
       </div>
 
       {!rank ? (
-        <div className="alert alert-warning mb-0">
-          No rank achieved yet.
-        </div>
+        <div className="alert alert-warning mb-0">No rank achieved yet.</div>
       ) : (
         <div className="row g-3">
           {cards.map((c, idx) => (
