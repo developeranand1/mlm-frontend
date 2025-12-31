@@ -253,3 +253,153 @@
     left: -280px;
   }
 }
+
+
+/* ===== User dropdown (desktop) ===== */
+.userMenuWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.userMenuBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(76, 175, 80, 0.25);
+  background: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.userMenuBtn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(76, 175, 80, 0.45);
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.15);
+}
+
+.avatarCircle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4CAF50 0%, #2d9c2d 100%);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.35);
+}
+
+.chev {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.chevOpen {
+  transform: rotate(180deg);
+}
+
+/* dropdown panel */
+.userDropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 220px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(76, 175, 80, 0.18);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  z-index: 2000;
+  animation: dropIn 140ms ease-out;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.95rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: all 0.2s ease;
+}
+
+.dropItem:hover {
+  background: rgba(76, 175, 80, 0.12);
+  color: #2d9c2d;
+}
+
+.dropIcon {
+  font-size: 1.05rem;
+}
+
+.dropDanger:hover {
+  background: rgba(220, 53, 69, 0.12);
+  color: #dc3545;
+}
+
+/* ===== Logout button style (if not already) ===== */
+.btnLogout {
+  background: transparent;
+  color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+.btnLogout:hover {
+  background: #dc3545;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===== Mobile user block (offcanvas) ===== */
+.mobileUser {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: rgba(76, 175, 80, 0.08);
+  border: 1px solid rgba(76, 175, 80, 0.18);
+}
+
+.avatarCircleSm {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #4CAF50 0%, #2d9c2d 100%);
+  box-shadow: 0 8px 18px rgba(76, 175, 80, 0.25);
+}
+
+.mobileSigned {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.mobileName {
+  display: block;
+  margin-top: 2px;
+}

@@ -1,0 +1,195 @@
+.wrap {
+  padding: 22px 0 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titleIcon {
+  opacity: 0.9;
+}
+
+.secure {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #eefbf2;
+  border: 1px solid #d4f3dd;
+  color: #166534;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card {
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+.summaryCard {
+  border-color: #d4f3dd;
+  box-shadow: 0 10px 22px rgba(22, 101, 52, 0.10);
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.alertIcon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+/* ---------- Inputs with icons ---------- */
+.inputWrap {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.input {
+  padding-left: 40px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+.input:focus {
+  border-color: #86efac !important;
+  box-shadow: 0 0 0 4px rgba(134, 239, 172, 0.25) !important;
+}
+
+/* ---------- Summary ---------- */
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 260px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.itemRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+}
+
+.itemName {
+  line-height: 1.2;
+}
+
+.price {
+  white-space: nowrap;
+}
+
+.hr {
+  opacity: 0.15;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 2px;
+  font-size: 16px;
+}
+
+.total {
+  font-size: 18px;
+  color: #166534;
+}
+
+/* ---------- Buttons ---------- */
+.btnIcon {
+  margin-right: 8px;
+}
+
+.resetBtn {
+  border-radius: 12px !important;
+}
+
+.payBtn {
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  border: 1px solid #86efac !important;
+  background: linear-gradient(180deg, #dcfce7 0%, #bbf7d0 100%) !important;
+  color: #14532d !important;
+  transition: transform 0.06s ease, box-shadow 0.2s ease;
+}
+
+.payBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(22, 101, 52, 0.16);
+}
+
+.payBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.okHint {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eefbf2;
+  border: 1px solid #d4f3dd;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
