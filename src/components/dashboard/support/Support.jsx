@@ -15,7 +15,8 @@ import {
   FiShield,
 } from "react-icons/fi";
 
-const API_BASE = "http://localhost:5000/api/support";
+// const API_BASE = "http://localhost:5000/api/support";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL+"support";
 
 function Badge({ status }) {
   const map = {

@@ -116,7 +116,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 export default function ContactPage() {
-  const BASE = "http://localhost:5000"; // change if deployed
+  const BASE =  process.env.NEXT_PUBLIC_API_URL
 
   const [form, setForm] = useState({
     name: "",

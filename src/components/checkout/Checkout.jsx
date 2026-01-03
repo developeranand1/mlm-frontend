@@ -46,8 +46,8 @@ export default function Checkout() {
   const [touched, setTouched] = useState({});
   const [msg, setMsg] = useState({ type: "", text: "" });
 
-  const BASE = "http://localhost:5000";
-
+  // const BASE = "http://localhost:5000";
+  const BASE =process.env.NEXT_PUBLIC_API_URL
   const getToken = () => {
     if (typeof window === "undefined") return "";
     return localStorage.getItem("token") || "";
@@ -128,7 +128,7 @@ export default function Checkout() {
       setLoading(true);
 
       const r1 = await fetch(
-        `${BASE}/api/payments/product/${productId}/create-order`,
+        `${BASE}payments/product/${productId}/create-order`,
         {
           method: "POST",
           headers: {
@@ -159,7 +159,7 @@ export default function Checkout() {
         handler: async function (response) {
           try {
             const r2 = await fetch(
-              `${BASE}/api/payments/product/${productId}/verify`,
+              `${BASE}payments/product/${productId}/verify`,
               {
                 method: "POST",
                 headers: {
