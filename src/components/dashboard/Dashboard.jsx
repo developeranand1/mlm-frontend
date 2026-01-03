@@ -62,10 +62,9 @@ export default function Dashboard() {
   }, []);
 
   const baseRegisterUrl = useMemo(() => {
-    // ✅ apna frontend domain set karo
-    // e.g. https://user.mrkwellness.com/register
+    
     return (
-      process.env.NEXT_PUBLIC_REGISTER_URL || "http://localhost:3000/signup"
+      process.env.NEXT_PUBLIC_REGISTER_URL || "https://oldasgold.com/signup"
     );
   }, []);
 
