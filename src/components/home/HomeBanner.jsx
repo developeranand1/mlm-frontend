@@ -61,7 +61,7 @@ export default function HomeBanner() {
             <div className={styles.imageCard}>
               <div className={styles.glow} />
               <img
-                src="/images/bottles.png"
+                src="/images/home/mlm.webp"
                 alt="Old As Gold bottles"
                 className={styles.image}
               />

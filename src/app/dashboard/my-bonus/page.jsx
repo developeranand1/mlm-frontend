@@ -1,5 +1,6 @@
 "use client";
 
+import Withdrawals from "@/components/dashboard/withdrawal/Withdrawals";
 import { userRankDetails, userWalletDetails } from "@/services/authService";
 import { useEffect, useState } from "react";
 import { FaWallet, FaGift, FaCoins, FaCheckCircle } from "react-icons/fa";
@@ -218,6 +219,7 @@ export default function MyBonus() {
           </>
         )}
       </div>
+      <Withdrawals></Withdrawals>
     </div>
   );
 }
