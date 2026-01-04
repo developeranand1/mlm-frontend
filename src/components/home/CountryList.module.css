@@ -82,7 +82,7 @@
   box-shadow: 0 22px 46px rgba(0, 0, 0, 0.12);
 }
 
-.flagWrap {
+.flagWrap{
   height: 110px;
   border-radius: 14px;
   background: linear-gradient(
@@ -90,14 +90,30 @@
     rgba(34, 197, 94, 0.18),
     rgba(16, 185, 129, 0.12)
   );
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;     /* ✅ zoom/shine clean */
+  padding: 12px;        /* ✅ spacing */
 }
 
-.flagWrap img {
-  max-width: 70%;
+.flagWrap img{
+  width: 100%;
+  height: 100%;         /* ✅ fixed box fill */
+  object-fit: contain;  /* ✅ crop nahi hoga */
+  display: block;       /* ✅ extra gap fix */
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
+  transition: transform .25s ease, filter .25s ease;
+  will-change: transform;
 }
+
+/* optional: hover pe smooth zoom */
+.card:hover .flagWrap img{
+  transform: scale(1.06);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.28));
+}
+
 
 /* Text */
 .meta {

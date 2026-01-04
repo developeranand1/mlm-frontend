@@ -445,10 +445,10 @@ export default function Kyc() {
         </form>
 
         {/* RAW */}
-        <details className={styles.details}>
+        {/* <details className={styles.details}>
           <summary className={styles.detailsSummary}>Raw KYC JSON</summary>
           <pre className={styles.pre}>{JSON.stringify(kyc, null, 2)}</pre>
-        </details>
+        </details> */}
       </div>
     </div>
   );

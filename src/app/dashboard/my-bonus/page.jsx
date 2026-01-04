@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FaWallet, FaGift, FaCoins, FaCheckCircle } from "react-icons/fa";
 
 export default function MyBonus() {
+  const api= process.env.NEXT_PUBLIC_API_URL
   const [wallet, setWallet] = useState(null);
   const [rank, setRank] = useState(null);
 
@@ -94,7 +95,7 @@ export default function MyBonus() {
         return;
       }
 
-      const res = await fetch("http://localhost:5000/api/wallet/claim-rank-bonus", {
+      const res = await fetch(`${api}wallet/claim-rank-bonus`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

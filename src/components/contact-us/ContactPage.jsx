@@ -7,7 +7,7 @@
 //     <div className="min-vh-100 bg-light py-5">
 //       <div className="container">
 //         <div className="row g-4 align-items-stretch">
-          
+
 //           {/* LEFT : STORE INFO */}
 //           <div className="col-lg-5">
 //             <div className="h-100 bg-white rounded-4 shadow p-4 p-lg-5">
@@ -108,7 +108,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { useState } from "react";
@@ -116,7 +115,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 export default function ContactPage() {
-  const BASE =  process.env.NEXT_PUBLIC_API_URL
+  const BASE = process.env.NEXT_PUBLIC_API_URL;
 
   const [form, setForm] = useState({
     name: "",
@@ -149,7 +148,7 @@ export default function ContactPage() {
     try {
       setLoading(true);
 
-      const r = await fetch(`${BASE}/api/contact`, {
+      const r = await fetch(`${BASE}contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -234,7 +233,8 @@ export default function ContactPage() {
             <div className="h-100 bg-white rounded-4 shadow p-4 p-lg-5">
               <h2 className="fw-bold mb-2">Get in Touch</h2>
               <p className="text-muted mb-4">
-                If you’ve got great products or want to work with us, then drop us a line.
+                If you’ve got great products or want to work with us, then drop
+                us a line.
               </p>
 
               <form className="row g-3" onSubmit={onSubmit}>
@@ -307,7 +307,6 @@ export default function ContactPage() {
               </form>
             </div>
           </div>
-
         </div>
       </div>
     </div>

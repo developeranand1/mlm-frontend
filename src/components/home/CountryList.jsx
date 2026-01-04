@@ -14,12 +14,12 @@ export default function CountryList() {
   const countries = useMemo(
     () => [
       { id: 1, name: "USA", img: "/images/country/us.png", inr: 83.25 },
-      { id: 2, name: "UAE", img: "/images/country/us.png", inr: 22.65 },
-      { id: 3, name: "UK", img: "/images/country/us.png", inr: 105.4 },
-      { id: 4, name: "Canada", img: "/images/country/us.png", inr: 61.2 },
-      { id: 5, name: "Australia", img: "/images/country/us.png", inr: 55.1 },
-      { id: 6, name: "Japan", img: "/images/country/us.png", inr: 0.56 },
-      { id: 7, name: "Germany", img: "/images/country/us.png", inr: 90.3 },
+      { id: 2, name: "Singapore", img: "/images/country/sg.png", inr: 22.65 },
+      { id: 3, name: "Portugal", img: "/images/country/pt.png", inr: 105.4 },
+      { id: 4, name: "Canada", img: "/images/country/ca.png", inr: 61.2 },
+      { id: 5, name: "Australia", img: "/images/country/au.png", inr: 55.1 },
+      { id: 6, name: "Malaysia", img: "/images/country/my.png", inr: 0.56 },
+      { id: 7, name: "Saudi Arabia", img: "/images/country/sa.png", inr: 90.3 },
     ],
     []
   );

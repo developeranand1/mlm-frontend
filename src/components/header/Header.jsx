@@ -324,11 +324,11 @@ export default function Header() {
                   Become an Affiliate
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/galley-list" className={styles.navLinkItem}>
                   Gallery
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
             <div className={styles.actionButtons}>
@@ -453,7 +453,7 @@ export default function Header() {
                 Affiliate
               </Link>
             </li>
-            <li className={styles.offcanvasNavItem}>
+            {/* <li className={styles.offcanvasNavItem}>
               <Link
                 href="/galley-list"
                 className={styles.offcanvasNavLink}
@@ -461,7 +461,7 @@ export default function Header() {
               >
                 Gallery
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           <div className={styles.offcanvasActions}>

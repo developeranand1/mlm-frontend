@@ -97,7 +97,7 @@ export default function ProductDetail({ product }) {
             <div className="d-flex justify-content-between align-items-start gap-3">
               <div>
                 <h1 className={styles.title}>{name}</h1>
-                <p className={styles.subtitle}>{description}</p>
+                {/* <p className={styles.subtitle}>{description}</p> */}
               </div>
 
               <span
@@ -217,9 +217,10 @@ export default function ProductDetail({ product }) {
                   <div className={styles.featureSub}>7 days policy</div>
                 </div>
               </div>
+              
             </div>
 
-           
+            <p className={styles.subtitle}>{description}</p>
           </div>
         </div>
       </div>

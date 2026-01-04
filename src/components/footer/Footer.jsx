@@ -50,9 +50,9 @@ export default function Footer() {
               <li>
                 <Link href="/product-list">Our Products</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/gallery-list">Gallery</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact-us">Contact Us</Link>
               </li>
