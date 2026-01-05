@@ -134,6 +134,15 @@ export default function LoginPage() {
                         </button>
                       </div>
                     </div>
+                    <div className="text-end mt-1">
+  <Link
+    href="/forgot-password"
+    className="text-success fw-semibold small text-decoration-none"
+  >
+    Forgot Password?
+  </Link>
+</div>
+
 
                     <button
                       className="btn btn-success w-100 py-2 fw-semibold mt-3"
