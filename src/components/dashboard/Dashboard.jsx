@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { userDetails } from "@/services/authService";
 import styles from "./dashboard.module.css";
+import { IoIosArrowDown } from "react-icons/io";
 import {
   FaUsers,
   FaUserPlus,
@@ -16,6 +17,7 @@ import {
   FaEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -223,7 +225,11 @@ export default function Dashboard() {
                 <MiniUserCard title="Left Referral" u={user.leftReferral} />
                 <MiniUserCard title="Right Referral" u={user.rightReferral} />
               </div>
+              <div className="text-center mt-3">
+                <Link href={"/dashboard/tree"} className="btn btn-success ">See Tree <IoIosArrowDown></IoIosArrowDown></Link>
+              </div>
             </div>
+
           </div>
         </div>
 
