@@ -6,8 +6,6 @@ const extractMessage = (error, fallback) =>
   error?.response?.data?.msg ||
   fallback;
 
-
-
 // export const authLogin = async (payload) => {
 //   try {
 //     const identifier = (payload?.identifier || "").trim();
@@ -52,8 +50,6 @@ export const authLogin = async ({ identifier, password }) => {
   }
 };
 
-
-
 export const authSignUp = async (payload) => {
   try {
     const res = await api.post("/auths/register", payload);
@@ -63,20 +59,17 @@ export const authSignUp = async (payload) => {
   }
 };
 
-
 export const userDetails = async (userId) => {
   const resp = await api.get(`/auths/users/${userId}`);
   // ✅ unwrap backend shape
   return resp.data?.user;
 };
 
-
 export const userRankDetails = async (userId) => {
   const resp = await api.get(`/auths/status/${userId}`);
   // ✅ unwrap backend shape
   return resp.data?.rank;
 };
-
 
 export const userWalletDetails = async (userId) => {
   const resp = await api.get(`/wallet/by-user/${userId}`);
@@ -87,14 +80,13 @@ export const userWalletDetails = async (userId) => {
 export const kycDetail = async (userId) => {
   try {
     const resp = await api.get(`/kyc/user/${userId}`);
-      return resp.data;
+    return resp.data;
   } catch (error) {
     throw new Error(
       extractMessage(error, "Kyc details failed. Please try again.")
     );
   }
 };
-
 
 export const kycUpdate = async (userId, formData) => {
   try {
@@ -108,14 +100,30 @@ export const kycUpdate = async (userId, formData) => {
   }
 };
 
-
 export const userProfile = async (userId) => {
   try {
     const resp = await api.get(`/users/user/${userId}`);
-      return resp.data;
+    return resp.data;
   } catch (error) {
     throw new Error(
       extractMessage(error, "Kyc details failed. Please try again.")
+    );
+  }
+};
+
+export const updateUserProfile = async (userId, payload) => {
+  try {
+    const resp = await api.put(`auths/users/${userId}`, payload);
+
+   
+    if (!resp?.data?.ok) {
+      throw new Error(resp?.data?.error || "Update failed");
+    }
+
+    return resp.data.user; // updated user object
+  } catch (error) {
+    throw new Error(
+      extractMessage(error, "Profile update failed. Please try again.")
     );
   }
 };

@@ -206,3 +206,53 @@
   .card { min-width: 240px; }
   .hLine { left: 15%; right: 15%; }
 }
+
+
+/* ===== FIX: make whole tree take its real width so left side appears ===== */
+
+.treeCanvas {
+  overflow: auto;
+  padding: 18px 60px;            /* left/right safe space */
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.05);
+
+  display: flex;                 /* important */
+  justify-content: flex-start;   /* center mat karo */
+  align-items: flex-start;
+}
+
+/* root + all nested nodeWrap should not shrink */
+.nodeWrap {
+  width: max-content;
+  flex: 0 0 auto;
+}
+
+/* children row should also size to content width */
+.children {
+  width: max-content;
+  flex: 0 0 auto;
+}
+
+/* each column should not shrink */
+.childCol {
+  flex: 0 0 auto;
+}
+
+/* cards should not shrink */
+.card {
+  flex: 0 0 auto;
+}
+
+/* lines / connectors clip na ho */
+.connectorTop,
+.children,
+.childCol {
+  overflow: visible;
+}
+
+
+@media (max-width: 768px) {
+  .treeCanvas { padding: 14px 30px; }
+}
