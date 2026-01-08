@@ -1,6 +1,7 @@
 "use client";
 
 import Dashboard from "@/components/dashboard/Dashboard";
+import RankList from "@/components/dashboard/RankList";
 import UserRank from "@/components/dashboard/UserRank";
 import WalletDashboard from "@/components/dashboard/WalletDashboard";
 import ProtectedRoute from "@/components/ProtectedRoute";
@@ -20,6 +21,7 @@ export default function DashboardHome() {
       <UserRank></UserRank>
       <WalletDashboard/>
    <Dashboard></Dashboard>
+   <RankList></RankList>
     </ProtectedRoute>
   );
 }

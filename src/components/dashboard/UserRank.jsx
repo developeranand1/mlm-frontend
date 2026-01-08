@@ -96,6 +96,12 @@ export default function UserRank() {
         icon: <FaTrophy />,
         // sub: `Updated: ${updated}`,
       },
+      {
+        title: "Pair Amount",
+        value: rank.pairAmount ?? 0,
+        icon: <FaTrophy />,
+        // sub: `Updated: ${updated}`,
+      },
     ];
   }, [rank]);
 
@@ -137,3 +143,6 @@ export default function UserRank() {
     </div>
   );
 }
+
+
+
