@@ -24,11 +24,11 @@ export default function DashboardLayout({ children }) {
   const nav = [
     { href: "/dashboard", label: "Dashboard", icon: <FaTachometerAlt /> },
     { href: "/dashboard/profile", label: "Profile", icon: <FaBox /> },
-    {
-      href: "/dashboard/my-bonus",
-      label: "My Bouns",
-      icon: <FaShoppingCart />,
-    },
+    // {
+    //   href: "/dashboard/my-bonus",
+    //   label: "My Bouns",
+    //   icon: <FaShoppingCart />,
+    // },
     // { href: "/dashboard/orders", label: "Orders", icon: <FaShoppingCart /> },
     { href: "/dashboard/kyc", label: "KYC", icon: <FaUsers /> },
     // { href: "/dashboard/reward", label: "Reward", icon: <FaTags /> },

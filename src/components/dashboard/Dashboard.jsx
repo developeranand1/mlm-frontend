@@ -68,6 +68,7 @@ export default function Dashboard() {
     return (
       process.env.NEXT_PUBLIC_REGISTER_URL || "https://oldasgold.com/signup"
     );
+    // return "http://localhost:3000/signup"
   }, []);
 
   const leftLink = useMemo(() => {

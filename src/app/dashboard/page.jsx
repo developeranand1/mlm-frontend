@@ -19,7 +19,7 @@ export default function DashboardHome() {
   return (
      <ProtectedRoute>
       <UserRank></UserRank>
-      <WalletDashboard/>
+      {/* <WalletDashboard/> */}
    <Dashboard></Dashboard>
    <RankList></RankList>
     </ProtectedRoute>
