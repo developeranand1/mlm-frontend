@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }) {
     // },
     // { href: "/dashboard/orders", label: "Orders", icon: <FaShoppingCart /> },
     { href: "/dashboard/kyc", label: "KYC", icon: <FaUsers /> },
-    // { href: "/dashboard/reward", label: "Reward", icon: <FaTags /> },
+    { href: "/dashboard/level", label: "Level", icon: <FaTags /> },
     {
       href: "/dashboard/transaction-history",
       label: "Transaction History",
