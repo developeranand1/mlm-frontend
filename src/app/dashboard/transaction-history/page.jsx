@@ -168,8 +168,11 @@ export default function TransactionHistory() {
                   <div className="card-body">
                     <div className={styles.txHeader}>
                       <div>
-                        <div className={styles.txAmount}>
+                        {/* <div className={styles.txAmount}>
                           ₹ {tx.payoutAmount}
+                        </div> */}
+                        <div className={styles.txAmount}>
+                        Net Payout:   ₹ {tx.netPayoutAmount}
                         </div>
                         <div className={styles.txSubAmount}>
                           Pair: {tx.pairAmount} | Bonus: {tx.bonusCash}

@@ -50,9 +50,10 @@ export const authLogin = async ({ identifier, password }) => {
   }
 };
 
-export const authSignUp = async (payload) => {
+export const authSignUp = async (payload) => { 
   try {
-    const res = await api.post("/auths/register", payload);
+    const res = await api.post("/registers/register", payload);
+    //  const res = await api.post("/auths/register", payload);
     return res.data;
   } catch (error) {
     throw new Error(extractMessage(error, "Signup failed. Please try again."));
