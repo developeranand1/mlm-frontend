@@ -31,7 +31,7 @@ export default function HomeBanner() {
             </p>
 
             <div className={styles.btnRow}>
-              <a href="/products" className={styles.ctaBtn}>
+              <a href="/product" className={styles.ctaBtn}>
                 <FaShoppingBag /> Explore Products <FaArrowRight />
               </a>
 

@@ -49,7 +49,7 @@ export default function JoinCommunity() {
               </h1>
 
               <div className={styles.buttonGroup}>
-                <a href="/files/business-model.pdf" className={styles.btnPrimary}>
+                <a  href="/images/pdf/oldasgold.pdf" className={styles.btnPrimary}>
                   <IoDownloadOutline size={22} />
                   Download Pdf
                   <IoArrowForwardOutline size={18} />

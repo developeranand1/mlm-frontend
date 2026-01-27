@@ -130,7 +130,7 @@ export default function AffiliatePage() {
                   </div>
 
                   <a
-                    href="/docs/old-as-gold-affiliate.pdf"
+                    href="/images/pdf/oldasgold.pdf"
                     className={`btn btn-light ${styles.pdfBtn}`}
                     target="_blank"
                     rel="noreferrer"
@@ -139,9 +139,7 @@ export default function AffiliatePage() {
                     Download PDF
                   </a>
                 </div>
-                <small className={styles.note}>
-                  (Replace PDF link with your real file path)
-                </small>
+                
               </div>
             </div>
           </div>
