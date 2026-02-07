@@ -21,12 +21,18 @@ function money(n) {
 export default function CartPage() {
   const router = useRouter();
   const { items, updateQty, removeItem, cartTotal, clearCart } = useCart();
-  const [confirm, setConfirm] = useState({ open: false, type: "", payload: null });
+  const [confirm, setConfirm] = useState({
+    open: false,
+    type: "",
+    payload: null,
+  });
 
-  const subtotal = cartTotal; // future: taxes/shipping add kar sakte ho
+  const subtotal = cartTotal;
 
-  const openRemove = (item) => setConfirm({ open: true, type: "remove", payload: item });
-  const openClear = () => setConfirm({ open: true, type: "clear", payload: null });
+  const openRemove = (item) =>
+    setConfirm({ open: true, type: "remove", payload: item });
+  const openClear = () =>
+    setConfirm({ open: true, type: "clear", payload: null });
   const close = () => setConfirm({ open: false, type: "", payload: null });
 
   const onConfirm = () => {
@@ -56,7 +62,9 @@ export default function CartPage() {
         <div className="d-flex align-items-center justify-content-between mb-3">
           <div>
             <h3 className={styles.title}>My Cart</h3>
-            <div className={styles.subtitle}>Review your items & proceed to checkout</div>
+            <div className={styles.subtitle}>
+              Review your items & proceed to checkout
+            </div>
           </div>
 
           <button className={`btn ${styles.clearBtn}`} onClick={openClear}>
@@ -76,8 +84,11 @@ export default function CartPage() {
               </div>
 
               {items.map((p) => {
-                const hasOffer = typeof p.offerAmount === "number" && p.offerAmount > 0;
-                const finalPrice = hasOffer ? Math.max(p.price - p.offerAmount, 0) : p.price;
+                const hasOffer =
+                  typeof p.offerAmount === "number" && p.offerAmount > 0;
+                const finalPrice = hasOffer
+                  ? Math.max(p.price - p.offerAmount, 0)
+                  : p.price;
                 const line = finalPrice * (p.qty || 0);
 
                 return (
@@ -93,22 +104,27 @@ export default function CartPage() {
                     </button>
 
                     <div className={styles.prodCell}>
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className={styles.img}
-                      />
+                      <img src={p.image} alt={p.name} className={styles.img} />
                       <div className={styles.prodInfo}>
                         <div className={styles.prodName}>{p.name}</div>
                         <div className={styles.prodMeta}>
-                          {p.brand ? <span className={styles.metaPill}>{p.brand}</span> : null}
-                          {p.size ? <span className={styles.metaPill}>Size: {p.size}</span> : null}
-                          {hasOffer ? (
-                            <span className={styles.offerPill}>
-                              <FaTag className="me-1" /> Save {money(p.offerAmount)}
+                          {p.brand ? (
+                            <span className={styles.metaPill}>{p.brand}</span>
+                          ) : null}
+                          {p.size ? (
+                            <span className={styles.metaPill}>
+                              Size: {p.size}
                             </span>
                           ) : null}
-                          <span className={`${styles.stockPill} ${p.stock > 0 ? styles.inStock : styles.outStock}`}>
+                          {hasOffer ? (
+                            <span className={styles.offerPill}>
+                              <FaTag className="me-1" /> Save{" "}
+                              {money(p.offerAmount)}
+                            </span>
+                          ) : null}
+                          <span
+                            className={`${styles.stockPill} ${p.stock > 0 ? styles.inStock : styles.outStock}`}
+                          >
                             <FaCheckCircle className="me-1" />
                             {p.stock > 0 ? "In stock" : "Out"}
                           </span>
@@ -118,7 +134,9 @@ export default function CartPage() {
 
                     <div className={styles.priceCell}>
                       <div className={styles.priceNow}>{money(finalPrice)}</div>
-                      {hasOffer ? <div className={styles.priceOld}>{money(p.price)}</div> : null}
+                      {hasOffer ? (
+                        <div className={styles.priceOld}>{money(p.price)}</div>
+                      ) : null}
                     </div>
 
                     <div className={styles.qtyCell}>
@@ -165,9 +183,12 @@ export default function CartPage() {
                 <b className={styles.totalBig}>{money(cartTotal)}</b>
               </div>
 
-              <button className={`btn ${styles.checkoutBtn}`} onClick={() => router.push("/checkout")}>
-  PROCEED TO CHECKOUT
-</button>
+              <button
+                className={`btn ${styles.checkoutBtn}`}
+                onClick={() => router.push("/checkout")}
+              >
+                PROCEED TO CHECKOUT
+              </button>
 
               <div className={styles.smallNote}>
                 Inclusive of all taxes • Free delivery above ₹499
@@ -180,7 +201,10 @@ export default function CartPage() {
       {/* Confirm Modal */}
       {confirm.open && (
         <div className={styles.modalBackdrop} onClick={close}>
-          <div className={styles.modalCard} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.modalCard}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={styles.modalHead}>
               <div className={styles.modalIcon}>
                 <FaExclamationTriangle />
