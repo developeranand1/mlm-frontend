@@ -8,49 +8,92 @@
   font-size: 13px;
 }
 
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px 12px;
+  min-width: 260px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  background: transparent;
+  color: #111827;
+}
+
 .treeCanvas {
   overflow: auto;
-  padding: 18px;
+  padding: 16px 22px;
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  scroll-behavior: smooth;
 }
 
-/* layout */
+/* tree sizing */
 .nodeWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  width: max-content;
+  flex: 0 0 auto;
 }
 
 .children {
   display: flex;
-  gap: 34px;
+  gap: 22px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 10px;
+  width: max-content;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 
 .childCol {
   position: relative;
-  padding-top: 12px;
+  padding-top: 8px;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 
 /* connectors */
 .connectorTop {
   position: relative;
   width: 100%;
-  height: 22px;
-  margin-top: 10px;
+  height: 18px;
+  margin-top: 8px;
+  overflow: visible;
 }
 
 .vLine {
   position: absolute;
   left: 50%;
   top: 0;
-  height: 22px;
-  border-left: 2px solid #e5e7eb;
+  height: 18px;
+  border-left: 2px solid #d1d5db;
   transform: translateX(-50%);
 }
 
@@ -58,23 +101,30 @@
   position: absolute;
   left: 25%;
   right: 25%;
-  top: 22px;
-  border-top: 2px solid #e5e7eb;
+  top: 18px;
+  border-top: 2px solid #d1d5db;
 }
 
 /* card */
 .card {
-  min-width: 280px;
-  max-width: 320px;
+  min-width: 210px;
+  max-width: 230px;
   width: 100%;
   background: #fff;
   border: 2px solid #e5e7eb;
   border-radius: 14px;
-  padding: 12px 14px;
+  padding: 10px 10px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: flex-start;
-  box-shadow: 0 3px 14px rgba(0,0,0,.06);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+  flex: 0 0 auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
 .empty {
@@ -83,22 +133,31 @@
   color: #9ca3af;
   justify-content: center;
   align-items: center;
-  padding: 18px;
+  padding: 14px;
+  min-height: 84px;
 }
 
 .inactive {
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 /* status border */
-.borderApproved { border-color: #22c55e; }
-.borderReject { border-color: #ef4444; }
-.borderPending { border-color: #facc15; }
+.borderApproved {
+  border-color: #22c55e;
+}
+
+.borderReject {
+  border-color: #ef4444;
+}
+
+.borderPending {
+  border-color: #facc15;
+}
 
 /* avatar */
 .avatar {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   background: #eef2ff;
   display: grid;
@@ -107,61 +166,66 @@
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
-  background: #22c55e; /* active green */
-  box-shadow: 0 0 0 4px rgba(34,197,94,.12);
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
 }
 
 .dotOff {
   background: #ef4444;
-  box-shadow: 0 0 0 4px rgba(239,68,68,.12);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
 }
 
-.meta { min-width: 0; }
+.meta {
+  min-width: 0;
+}
 
 .name {
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 160px;
 }
 
 .row {
-  margin-top: 6px;
+  margin-top: 5px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   align-items: center;
 }
 
 .stats {
-  margin-top: 8px;
+  margin-top: 7px;
   display: flex;
-  gap: 12px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .stat {
-  font-size: 12px;
+  font-size: 11px;
   color: #374151;
   background: #f3f4f6;
-  padding: 3px 8px;
+  padding: 3px 7px;
   border-radius: 999px;
 }
 
 .referredBy {
-  margin-top: 8px;
-  font-size: 12px;
+  margin-top: 7px;
+  font-size: 11px;
   color: #6b7280;
+  line-height: 1.4;
 }
 
 /* chips */
 .chip {
-  font-size: 11px;
-  padding: 3px 10px;
+  font-size: 10px;
+  padding: 3px 8px;
   background: #f3f4f6;
   border-radius: 999px;
   color: #111827;
@@ -174,9 +238,9 @@
 
 /* badges */
 .badge {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
-  padding: 3px 10px;
+  padding: 3px 8px;
   border-radius: 999px;
   text-transform: uppercase;
   border: 1px solid transparent;
@@ -200,59 +264,56 @@
   border-color: #fde68a;
 }
 
-/* responsive */
+.resultInfo {
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* mobile */
 @media (max-width: 768px) {
-  .children { gap: 14px; }
-  .card { min-width: 240px; }
-  .hLine { left: 15%; right: 15%; }
-}
+  .treeCanvas {
+    padding: 12px 14px;
+  }
 
+  .children {
+    gap: 12px;
+  }
 
-/* ===== FIX: make whole tree take its real width so left side appears ===== */
+  .card {
+    min-width: 160px;
+    max-width: 170px;
+    padding: 8px;
+    border-radius: 12px;
+  }
 
-.treeCanvas {
-  overflow: auto;
-  padding: 18px 60px;            /* left/right safe space */
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.05);
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
 
-  display: flex;                 /* important */
-  justify-content: flex-start;   /* center mat karo */
-  align-items: flex-start;
-}
+  .name {
+    font-size: 12px;
+    max-width: 110px;
+  }
 
-/* root + all nested nodeWrap should not shrink */
-.nodeWrap {
-  width: max-content;
-  flex: 0 0 auto;
-}
+  .stat,
+  .chip,
+  .badge,
+  .referredBy {
+    font-size: 9px;
+  }
 
-/* children row should also size to content width */
-.children {
-  width: max-content;
-  flex: 0 0 auto;
-}
+  .stats {
+    gap: 4px;
+  }
 
-/* each column should not shrink */
-.childCol {
-  flex: 0 0 auto;
-}
+  .searchBox {
+    min-width: 100%;
+  }
 
-/* cards should not shrink */
-.card {
-  flex: 0 0 auto;
-}
-
-/* lines / connectors clip na ho */
-.connectorTop,
-.children,
-.childCol {
-  overflow: visible;
-}
-
-
-@media (max-width: 768px) {
-  .treeCanvas { padding: 14px 30px; }
+  .hLine {
+    left: 18%;
+    right: 18%;
+  }
 }

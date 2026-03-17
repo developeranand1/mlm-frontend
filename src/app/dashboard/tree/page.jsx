@@ -1,10 +1,10 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./tree.module.css";
 
-const API_BASE =  process.env.NEXT_PUBLIC_API_URL 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 const StatusBadge = ({ status }) => {
   const s = status || "Pending";
@@ -29,31 +29,41 @@ const NodeCard = ({ node }) => {
       : styles.borderPending;
 
   return (
-    <div className={`${styles.card} ${borderCls} ${node.isActive === false ? styles.inactive : ""}`}>
+    <div
+      className={`${styles.card} ${borderCls} ${
+        node.isActive === false ? styles.inactive : ""
+      }`}
+    >
       <div className={styles.avatar}>
-        <span className={`${styles.dot} ${node.isActive === false ? styles.dotOff : ""}`} />
+        <span
+          className={`${styles.dot} ${node.isActive === false ? styles.dotOff : ""}`}
+        />
       </div>
 
       <div className={styles.meta}>
         <div className={styles.name} title={node.name}>
-          {node.name}
+          {node.name || "-"}
         </div>
 
         <div className={styles.row}>
           <StatusBadge status={node.status} />
-          <span className={`${styles.chip} ${styles.chipGray}`}>{node.username || "-"}</span>
-          {node.referralCode ? <span className={styles.chip}>{node.referralCode}</span> : null}
+          <span className={`${styles.chip} ${styles.chipGray}`}>
+            {node.username || "-"}
+          </span>
+          {node.referralCode ? (
+            <span className={styles.chip}>{node.referralCode}</span>
+          ) : null}
         </div>
 
         <div className={styles.stats}>
           <span className={styles.stat}>L: {node.leftCount ?? 0}</span>
           <span className={styles.stat}>R: {node.rightCount ?? 0}</span>
-          <span className={styles.stat}>Pairs: {node.pairCount ?? 0}</span>
+          <span className={styles.stat}>P: {node.pairCount ?? 0}</span>
         </div>
 
         {node.referredBy?.name ? (
           <div className={styles.referredBy}>
-            Referred By: <b>{node.referredBy.name}</b>
+            Referred: <b>{node.referredBy.name}</b>
           </div>
         ) : null}
       </div>
@@ -74,7 +84,6 @@ const TreeBranch = ({ node }) => {
 
       {hasAnyChild && (
         <>
-          {/* connector from parent to children */}
           <div className={styles.connectorTop}>
             <div className={styles.vLine} />
             <div className={styles.hLine} />
@@ -95,67 +104,100 @@ const TreeBranch = ({ node }) => {
   );
 };
 
+/* -------- helper: search node in full tree -------- */
+function findNodeInTree(node, searchText) {
+  if (!node || !searchText) return null;
+
+  const q = searchText.toLowerCase().trim();
+
+  const values = [
+    node.name,
+    node.username,
+    node.referralCode,
+    node.status,
+    node._id,
+    node.id,
+  ]
+    .filter(Boolean)
+    .map((v) => String(v).toLowerCase());
+
+  const matched = values.some((v) => v.includes(q));
+  if (matched) return node;
+
+  const leftFound = findNodeInTree(node.children?.left, q);
+  if (leftFound) return leftFound;
+
+  const rightFound = findNodeInTree(node.children?.right, q);
+  if (rightFound) return rightFound;
+
+  return null;
+}
+
 export default function Tree() {
   const [loading, setLoading] = useState(true);
   const [tree, setTree] = useState(null);
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
-useEffect(() => {
-  const storedUser = localStorage.getItem("user");
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
 
-  if (!storedUser) {
-    setError("localStorage me user nahi mila");
-    setLoading(false);
-    return;
-  }
-
-  let userId = null;
-
-  try {
-    const userObj = JSON.parse(storedUser);
-
-    // support all common cases
-    userId = userObj?.id || userObj?._id;
-  } catch (err) {
-    setError("Invalid user data in localStorage");
-    setLoading(false);
-    return;
-  }
-
-  if (!userId) {
-    setError("userId nahi mila localStorage se");
-    setLoading(false);
-    return;
-  }
-
-  const url = `${API_BASE}users/users/${userId}/tree?depth=10`;
-
-  (async () => {
-    try {
-      setLoading(true);
-      setError("");
-
-      const res = await fetch(url);
-      const data = await res.json();
-
-      if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || "Tree API failed");
-      }
-
-      setTree(data.tree);
-    } catch (e) {
-      setError(e.message || "Something went wrong");
-    } finally {
+    if (!storedUser) {
+      setError("localStorage me user nahi mila");
       setLoading(false);
+      return;
     }
-  })();
-}, []);
 
+    let userId = null;
+
+    try {
+      const userObj = JSON.parse(storedUser);
+      userId = userObj?.id || userObj?._id;
+    } catch (err) {
+      setError("Invalid user data in localStorage");
+      setLoading(false);
+      return;
+    }
+
+    if (!userId) {
+      setError("userId nahi mila localStorage se");
+      setLoading(false);
+      return;
+    }
+
+    const url = `${API_BASE}users/users/${userId}/tree?depth=10000000`;
+
+    (async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!res.ok || !data?.ok) {
+          throw new Error(data?.error || "Tree API failed");
+        }
+
+        setTree(data.tree);
+      } catch (e) {
+        setError(e.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  const filteredTree = useMemo(() => {
+    if (!tree) return null;
+    if (!search.trim()) return tree;
+    return findNodeInTree(tree, search.trim());
+  }, [tree, search]);
 
   return (
     <div className={`container-fluid ${styles.page}`}>
-      <div className="container py-4">
-        <div className="d-flex align-items-center justify-content-between mb-3">
+      <div className="container py-3 py-md-4">
+        <div className="d-flex align-items-start align-items-md-center justify-content-between mb-3 flex-column flex-md-row gap-2">
           <div>
             <h4 className="mb-1">User Tree</h4>
             <div className={styles.sub}>Binary Tree View (Left / Right)</div>
@@ -170,15 +212,46 @@ useEffect(() => {
           </button>
         </div>
 
+        <div className={styles.toolbar}>
+          <div className={styles.searchBox}>
+            <span>🔍</span>
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder="Name, username, referral code se search karo..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          {search ? (
+            <button className="btn btn-sm btn-light border" onClick={() => setSearch("")}>
+              Clear
+            </button>
+          ) : null}
+        </div>
+
+        {!loading && !error && tree && (
+          <div className={styles.resultInfo}>
+            {search.trim()
+              ? filteredTree
+                ? `Search result: "${search}" ka matched node aur uska subtree show ho raha hai`
+                : `No match found for "${search}"`
+              : "Full tree show ho raha hai"}
+          </div>
+        )}
+
         {error ? (
           <div className="alert alert-danger">{error}</div>
         ) : loading ? (
           <div className="alert alert-info">Loading tree...</div>
         ) : !tree ? (
           <div className="alert alert-warning">Tree not found.</div>
+        ) : !filteredTree ? (
+          <div className="alert alert-warning">Search result nahi mila.</div>
         ) : (
           <div className={styles.treeCanvas}>
-            <TreeBranch node={tree} />
+            <TreeBranch node={filteredTree} />
           </div>
         )}
       </div>
