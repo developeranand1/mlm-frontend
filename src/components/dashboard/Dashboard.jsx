@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { userDetails } from "@/services/authService";
 import styles from "./dashboard.module.css";
 import { IoIosArrowDown } from "react-icons/io";
+import { useAuth } from "@/context/AuthProvider"; 
 import {
   FaUsers,
   FaUserPlus,
@@ -24,6 +25,9 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [copyMsg, setCopyMsg] = useState("");
   const [error, setError] = useState("");
+
+
+  const { logout } = useAuth();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -62,6 +66,8 @@ export default function Dashboard() {
 
     fetchUser();
   }, []);
+
+  
 
   const baseRegisterUrl = useMemo(() => {
     
@@ -110,6 +116,12 @@ export default function Dashboard() {
     } catch (e) {
       // ignore
     }
+  };
+
+    const handleSignupRedirect = (link) => {
+    const newTab = window.open("", "_blank"); // open first
+    logout(); // logout current user
+    newTab.location.href = link; // go to signup
   };
 
   if (loading) return <div className="container py-4">Loading...</div>;
@@ -235,30 +247,23 @@ export default function Dashboard() {
         </div>
 
         {/* RIGHT: Referral Links */}
-        <div className="col-lg-4">
+         <div className="col-lg-4">
           <div className={`card border-0 shadow-sm ${styles.panel}`}>
             <div className={`card-body p-4 ${styles.panelBody}`}>
               <h3 className={`mb-1 ${styles.title}`}>Referral Links</h3>
-              <div className="text-muted">
-                Share your referral links and earn rewards.
-              </div>
 
-              {copyMsg ? (
+              {copyMsg && (
                 <div className="alert alert-success py-2 mt-3 mb-0">
                   {copyMsg}
                 </div>
-              ) : null}
+              )}
 
-              <div className={`mt-3 ${styles.linkBox} ${styles.leftBox}`}>
+              {/* LEFT LINK */}
+              <div className={`mt-3 ${styles.linkBox}`}>
                 <div className="d-flex align-items-center gap-2">
-                  <div className={styles.linkIconWrap}>
-                    <FaLink />
-                  </div>
+                  <FaLink />
                   <div>
                     <div className={styles.linkTitle}>Left Referral Link</div>
-                    <div className={styles.linkSub}>
-                      Share this link to earn from left team
-                    </div>
                   </div>
                 </div>
 
@@ -268,30 +273,33 @@ export default function Dashboard() {
                   <button
                     className="btn btn-success w-100"
                     onClick={() => copyToClipboard(leftLink)}
-                    type="button"
                   >
-                    <FaCopy className="me-2" /> Copy Link
+                    <FaCopy /> Copy
                   </button>
+
                   <button
                     className="btn btn-outline-success w-100"
                     onClick={() => shareLink(leftLink)}
-                    type="button"
                   >
-                    <FaShareAlt className="me-2" /> Share
+                    <FaShareAlt /> Share
                   </button>
                 </div>
+
+                {/* ✅ SIGNUP BUTTON */}
+                <button
+                  className="btn btn-primary w-100 mt-2"
+                  onClick={() => handleSignupRedirect(leftLink)}
+                >
+                  🚀 Sign Up (Left)
+                </button>
               </div>
 
-              <div className={`mt-3 ${styles.linkBox} ${styles.rightBox}`}>
+              {/* RIGHT LINK */}
+              <div className={`mt-3 ${styles.linkBox}`}>
                 <div className="d-flex align-items-center gap-2">
-                  <div className={styles.linkIconWrapAlt}>
-                    <FaLink />
-                  </div>
+                  <FaLink />
                   <div>
                     <div className={styles.linkTitle}>Right Referral Link</div>
-                    <div className={styles.linkSub}>
-                      Share this link to earn from right team
-                    </div>
                   </div>
                 </div>
 
@@ -301,51 +309,32 @@ export default function Dashboard() {
                   <button
                     className="btn btn-success w-100"
                     onClick={() => copyToClipboard(rightLink)}
-                    type="button"
                   >
-                    <FaCopy className="me-2" /> Copy Link
+                    <FaCopy /> Copy
                   </button>
+
                   <button
                     className="btn btn-outline-success w-100"
                     onClick={() => shareLink(rightLink)}
-                    type="button"
                   >
-                    <FaShareAlt className="me-2" /> Share
+                    <FaShareAlt /> Share
                   </button>
                 </div>
+
+                {/* ✅ SIGNUP BUTTON */}
+                <button
+                  className="btn btn-primary w-100 mt-2"
+                  onClick={() => handleSignupRedirect(rightLink)}
+                >
+                  🚀 Sign Up (Right)
+                </button>
               </div>
 
-              <div className={`mt-3 ${styles.note}`}>
-                Tip: Signup page pe query se auto-fill karwa sakte ho:{" "}
-                <b>?ref=RCxxx&side=L</b>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Raw JSON (optional) */}
-      {/* <div className="mt-4">
-        <div className={`card border-0 shadow-sm ${styles.panel}`}>
-          <div className="card-body p-3">
-            <div className="d-flex justify-content-between align-items-center">
-              <div className={styles.jsonTitle}>API Response Preview</div>
-              <button
-                className="btn btn-outline-success btn-sm"
-                type="button"
-                onClick={() =>
-                  copyToClipboard(JSON.stringify({ ok: true, user }, null, 2))
-                }
-              >
-                <FaCopy className="me-2" /> Copy JSON
-              </button>
-            </div>
-            <pre className={styles.jsonBox}>
-              {JSON.stringify({ ok: true, user }, null, 2)}
-            </pre>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
